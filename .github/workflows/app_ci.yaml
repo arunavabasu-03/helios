@@ -1,8 +1,10 @@
-name: 🌱 APP CI
+name: 🌱 EXPO CI
 on: [pull_request]
 defaults:
   run:
-    working-directory: ./app
+    working-directory: app
+
+
 jobs:
   app-preview:
     runs-on: ubuntu-latest
