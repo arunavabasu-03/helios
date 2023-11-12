@@ -1,6 +1,10 @@
+name: 🌱 APP CI
 on: [pull_request]
+defaults:
+  run:
+    working-directory: ./app
 jobs:
-  preview:
+  app-preview:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
