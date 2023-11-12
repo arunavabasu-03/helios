@@ -1,13 +1,10 @@
-
-name: 🌱 EXPO CI
 on: [pull_request]
-
-jobs:
-  app-preview:
-    runs-on: ubuntu-latest
-    defaults:
+defaults:
       run:
         working-directory: app
+jobs:
+  update:
+    runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
@@ -15,9 +12,8 @@ jobs:
       - name: 🏗 Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x  # Use a version compatible with your project
+          node-version: 18.x
           cache: yarn
-          cache-dependency-path: app/yarn.lock
 
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
@@ -27,14 +23,9 @@ jobs:
 
       - name: 📦 Install dependencies
         run: yarn install
-        env:
-          CI: true
 
-      - name: 🚀 Create preview
-        uses: expo/expo-github-action/preview@v8
-        with:
-          command:  eas update --auto
-
+      - name: 🚀 Create update
+        run: eas update --auto --non-interactive
 # name: 🌱 EXPO CI
 # on: [pull_request]
 # jobs:
