@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "helios",
+    "owner": "arunavabasu-03",
     "slug": "helios",
     "version": "1.0.0",
     "orientation": "portrait",
