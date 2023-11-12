@@ -1,40 +1,69 @@
+import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Image, Text } from "@rneui/themed";
+import { Text, Input, Button } from "@rneui/themed";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Input } from "@rneui/themed";
+
 const ImageGenerationPage = () => {
   return (
-    <View style={styles.container}>
-      <Text h4>Enter Prompt</Text>
-      <Input
-        placeholder="Enter anything"
-        containerStyle={styles.input}
-        inputContainerStyle={styles.inputContainer}
-        autoCorrect={false}
-      />
-    </View>
+    <SafeAreaView style={styles.maincontainer}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <Text h4 style={styles.promptText}>
+            📖 Enter Prompt
+          </Text>
+          <Input
+            placeholder="Enter anything"
+            containerStyle={styles.input}
+            inputContainerStyle={styles.inputContainer}
+            autoCorrect={false}
+          />
+        </View>
+      </View>
+      <View style={styles.buttonCointainer}>
+        <Button title={"Generate"} buttonStyle={styles.button} />
+      </View>
+    </SafeAreaView>
   );
 };
 
 export default ImageGenerationPage;
 
 const styles = StyleSheet.create({
-  container: {
+  maincontainer: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    alignItems: "flex-start",
+  },
+  container: {
+    flex: 1,
+    marginTop: 40,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  inputContainer: {
+    width: "100%",
+    borderBottomWidth: 0,
+  },
+  promptText: {
+    marginBottom: 8,
   },
   input: {
-    marginTop: 100,
     borderWidth: 1,
     borderColor: "gray",
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    width: "100%",
   },
-  inputContainer: {
-    borderBottomWidth: 0,
+  buttonCointainer: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button: {
+    backgroundColor: "#26c9ff",
+    borderRadius: 50,
+    height: 80,
+    width: 280,
+    margin: 20,
   },
 });
