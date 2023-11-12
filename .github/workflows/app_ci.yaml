@@ -1,7 +1,12 @@
+name: "📦 Expo CI"
 on: [pull_request]
 defaults:
       run:
         working-directory: app
+permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
 jobs:
   preview:
     runs-on: ubuntu-latest
