@@ -28,6 +28,7 @@ jobs:
         uses: expo/expo-github-action/preview@v8
         with:
           command:  eas update --auto 
+          working-directory: app
 # name: 🌱 EXPO CI
 # on: [pull_request]
 # jobs:
