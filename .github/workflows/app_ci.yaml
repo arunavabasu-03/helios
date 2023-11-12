@@ -15,7 +15,7 @@ jobs:
       - name: 🏗 Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 14.x  # Use a version compatible with your project
+          node-version: 18.x  # Use a version compatible with your project
           cache: yarn
           cache-dependency-path: app/yarn.lock
 
