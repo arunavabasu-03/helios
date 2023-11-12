@@ -1,11 +1,17 @@
-import { View, Text, StyleSheet } from "react-native";
-import { Image } from "@rneui/themed";
+import { View, StyleSheet } from "react-native";
+import { Image, Text } from "@rneui/themed";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input } from "@rneui/themed";
 const ImageGenerationPage = () => {
   return (
     <View style={styles.container}>
-      <Input placeholder="Enter anything" containerStyle={styles.input} />
+      <Text h4>Enter Prompt</Text>
+      <Input
+        placeholder="Enter anything"
+        containerStyle={styles.input}
+        inputContainerStyle={styles.inputContainer}
+        autoCorrect={false}
+      />
     </View>
   );
 };
@@ -21,13 +27,14 @@ const styles = StyleSheet.create({
   },
   input: {
     marginTop: 100,
-    borderRadius: 10,
-    color: "#A8A8A8",
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    width: "100%",
   },
-  //   image: {
-  //     marginTop: 100,
-  //     height: 280,
-  //     width: 280,
-  //     borderRadius: 10,
-  //   },
+  inputContainer: {
+    borderBottomWidth: 0,
+  },
 });
