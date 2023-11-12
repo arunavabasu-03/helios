@@ -1,13 +1,15 @@
 name: 🌱 EXPO CI
 on: [pull_request]
-defaults:
-  run:
-    working-directory: app
+
+
 
 
 jobs:
   app-preview:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest]
+    defaults:
+      run:
+       working-directory: app
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
