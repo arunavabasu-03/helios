@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 14.x  # Use a version compatible with your project
           cache: yarn
+          cache-dependency-path: app/yarn.lock
 
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
