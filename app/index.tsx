@@ -1,11 +1,12 @@
-import React, {  useState } from "react";
+import React, { useRef, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Input, Button } from "@rneui/themed";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const index = () => {
   const [inputValue, setInputValue] = useState<string>("");
+  const linkRef = useRef(); // Create a ref
   return (
     <SafeAreaView style={styles.maincontainer}>
       <View style={styles.container}>
@@ -23,15 +24,16 @@ const index = () => {
         </View>
       </View>
       <View style={styles.buttonCointainer}>
-        <Link
-          href={{
-            pathname: "/imageGeneration",
-            params: { input: inputValue },
+        <Button
+          title={"Generate"}
+          buttonStyle={styles.button}
+          onPress={() => {
+            router.push({
+              pathname: "/imageGeneration",
+              params: { input: inputValue },
+            });
           }}
-          asChild
-        >
-          <Button title={"Generate"} buttonStyle={styles.button} />
-        </Link>
+        />
       </View>
     </SafeAreaView>
   );
