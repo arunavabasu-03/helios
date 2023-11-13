@@ -1,11 +1,10 @@
 name: "📦 Expo CI"
 on: [pull_request]
+
 permissions:
-      contents: write
-      pull-requests: write
-      repository-projects: write
-
-
+    contents: write
+    pull-requests: write
+    repository-projects: write
 
 jobs:
   preview:
@@ -19,7 +18,7 @@ jobs:
         with:
           node-version: 18.x
           cache: yarn
-          cache-dependency-path: app/yarn.lock
+      
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
         with:
