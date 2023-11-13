@@ -1,12 +1,13 @@
-import { View, Text } from "react-native";
-import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
+import { View, ActivityIndicator } from "react-native";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   createPrediction,
   getPredictionStatus,
   getOutput,
 } from "../../backend/replicate";
-import { Image } from "@rneui/base";
+import { Image, Text } from "@rneui/base";
+import { Button } from "@rneui/themed";
 
 export default function index() {
   const router = useRouter();
@@ -50,27 +51,80 @@ export default function index() {
   }, []);
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Prompt:{input}</Text>
-      <Text>Response from API:</Text>
-      {responseData && (
-        <View>
-          <Text>Output: {JSON.stringify(responseData)}</Text>
-          {firstImage && (
-            <Image
-              source={{ uri: firstImage }}
-              style={{ width: 200, height: 200 }}
-            />
-          )}
-        </View>
-      )}
-      <Text
-        onPress={() => {
-          router.push({ pathname: "/" });
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginTop: 20,
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "flex-start",
+          marginTop: 20,
         }}
       >
-        Go Home
-      </Text>
+        <Text h4 style={{ fontSize: 12, margin: 10 }}>
+          Prompt- <Text style={{ fontSize: 20, margin: 10 }}>{input}</Text>
+        </Text>
+        {responseData ? (
+          <View>
+            {firstImage ? (
+              <Image
+                source={{ uri: firstImage }}
+                style={{ width: 200, height: 200 }}
+              />
+            ) : (
+              <View
+                style={{
+                  height: 200,
+                  width: 200,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <ActivityIndicator size="large" />
+              </View>
+            )}
+          </View>
+        ) : (
+          <View
+            style={{
+              height: 200,
+              width: 200,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ActivityIndicator size="large" />
+          </View>
+        )}
+      </View>
+      <View
+        style={{
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Button
+          onPress={() => {
+            router.push({ pathname: "/" });
+          }}
+          buttonStyle={{
+            backgroundColor: "#26c9ff",
+            borderRadius: 50,
+            height: 80,
+            width: 280,
+            margin: 20,
+          }}
+        >
+          Done
+        </Button>
+      </View>
     </View>
   );
 }

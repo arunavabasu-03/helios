@@ -10,7 +10,7 @@ const _layout = () => {
       />
       <Stack.Screen
         name="imageGeneration/index"
-        options={{ headerTitle: "HomePage", headerTitleAlign: "center" }}
+        options={{ headerTitle: "Image", headerTitleAlign: "center" }}
       />
     </Stack>
   );
