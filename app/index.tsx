@@ -1,9 +1,11 @@
-import React from "react";
+import React, {  useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Input, Button } from "@rneui/themed";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Link } from "expo-router";
 
-const ImageGenerationPage = () => {
+const index = () => {
+  const [inputValue, setInputValue] = useState<string>("");
   return (
     <SafeAreaView style={styles.maincontainer}>
       <View style={styles.container}>
@@ -16,17 +18,26 @@ const ImageGenerationPage = () => {
             containerStyle={styles.input}
             inputContainerStyle={styles.inputContainer}
             autoCorrect={false}
+            onChangeText={(text) => setInputValue(text)}
           />
         </View>
       </View>
       <View style={styles.buttonCointainer}>
-        <Button title={"Generate"} buttonStyle={styles.button} />
+        <Link
+          href={{
+            pathname: "/imageGeneration",
+            params: { input: inputValue },
+          }}
+          asChild
+        >
+          <Button title={"Generate"} buttonStyle={styles.button} />
+        </Link>
       </View>
     </SafeAreaView>
   );
 };
 
-export default ImageGenerationPage;
+export default index;
 
 const styles = StyleSheet.create({
   maincontainer: {

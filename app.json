@@ -7,6 +7,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "helios",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -27,12 +28,16 @@
       "package": "com.arunavabasu.projects.helios"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+       "bundler": "metro"
     },
     "extra": {
       "eas": {
         "projectId": "3c80bc7e-6ea4-48f6-8eed-8b8f1f372141"
       }
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
